@@ -17,12 +17,8 @@ app.use('/user', userRouter);
 app.use('/task', taskRouter);
 app.use('/login', loginRouter);
 
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Express + TypeScript Server');
-// });
-
 app.use(errorMiddleware);
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  console.log('⚡️[server]: Server is running');
 });
