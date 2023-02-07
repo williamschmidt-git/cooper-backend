@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "npx tsc",
-    "prestart": "npm run build",
+    "prestart": "sudo rm -rf ./dist && npm run build",
     "start": "node dist/index.js",
     "dev": "ts-node-dev src/index.ts"
   },
