@@ -1,12 +1,13 @@
 /* eslint-disable class-methods-use-this */
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { DeleteManyTasks } from '../useCases/DeleteManyTasks';
+import { DeleteTask } from '../useCases/DeleteTask';
 import { UpdateTask } from '../useCases/UpdateTask';
 import { ListTasks } from '../useCases/ListTasks';
 import { TaskDTO } from '../DTOs/TaskDTO';
 import { CreateTask } from '../useCases/CreateTask';
 import { DataController } from './user.controller';
-import { DeleteTasks } from '../useCases/DeleteTasks';
 
 export class TaskController {
   async create(req: Request, res: Response) {
@@ -33,12 +34,26 @@ export class TaskController {
   }
 
   async delete(req: Request, res: Response) {
-    const deleteTasksUseCase = container.resolve(DeleteTasks);
+    const deleteTaskUseCase = container.resolve(DeleteTask);
     const { id } = req.params;
 
     const convertId = Number(id);
 
-    const { code, data }: DataController = await deleteTasksUseCase.execute({ id: convertId });
+    const { code, data }: DataController = await deleteTaskUseCase.execute({ id: convertId });
+
+    return res.status(code).json(data);
+  }
+
+  async deleteMany(req: Request, res: Response) {
+    const deleteManyTasksUseCase = container.resolve(DeleteManyTasks);
+
+    const { id } = req.user;
+    const [task] = req.body;
+
+    const convertId = Number(id);
+
+    const { code, data }: DataController = await deleteManyTasksUseCase
+      .execute({ id: convertId, task });
 
     return res.status(code).json(data);
   }

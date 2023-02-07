@@ -1,4 +1,5 @@
 import express from 'express';
+import { deleteManyTasksFactory } from '../factories/DeleteManytaskFactory';
 import { updateTaskFactory } from '../factories/UpdateTaskFactory';
 import { deleteTaskFactory } from '../factories/DeleteTaskFactory';
 import { listTaskFactory } from '../factories/ListTaskFactory';
@@ -9,6 +10,7 @@ const taskRouter = express.Router();
 
 taskRouter.post('/', authMiddleware, createTaskFactory);
 taskRouter.get('/', authMiddleware, listTaskFactory);
+taskRouter.delete('/', authMiddleware, deleteManyTasksFactory);
 taskRouter.delete('/:id', authMiddleware, deleteTaskFactory);
 taskRouter.patch('/:id', authMiddleware, updateTaskFactory);
 

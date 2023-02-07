@@ -62,4 +62,13 @@ export class TaskRepository implements ITaskRepository {
 
     return updatedTask;
   }
+
+  async deleteMany(id: number, isTaskDone: boolean): Promise<void> {
+    await prisma.task.deleteMany({
+      where: {
+        userId: id,
+        isTaskDone,
+      },
+    });
+  }
 }

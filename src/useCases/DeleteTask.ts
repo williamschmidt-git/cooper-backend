@@ -7,7 +7,7 @@ interface DeleteTaskRequest {
 }
 
 @injectable()
-export class DeleteTasks {
+export class DeleteTask {
   constructor(
     @inject('TaskRepository')
     private taskRepository: ITaskRepository,
