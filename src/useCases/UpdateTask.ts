@@ -1,20 +1,22 @@
 import { DataController } from 'src/controllers/user.controller';
 import { ITaskRepository } from 'src/database/prisma/repositories/ITaskRepository';
 import { inject, injectable } from 'tsyringe';
+import { TaskDTO } from '../DTOs/TaskDTO';
 
-interface DeleteTaskRequest {
-  id: number
+interface UpdateTaskRequest {
+  id: number,
+  task: TaskDTO
 }
 
 @injectable()
-export class DeleteTasks {
+export class UpdateTask {
   constructor(
     @inject('TaskRepository')
     private taskRepository: ITaskRepository,
   ) {}
 
-  async execute(request: DeleteTaskRequest): Promise<DataController> {
-    const tasks = await this.taskRepository.delete(request.id);
+  async execute(request: UpdateTaskRequest): Promise<DataController> {
+    const tasks = await this.taskRepository.update(request.id, request.task);
 
     if (!tasks) {
       return {

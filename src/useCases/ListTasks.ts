@@ -17,7 +17,7 @@ export class ListTasks {
     const tasks = await this.taskRepository.list(request.id);
 
     return {
-      code: 400,
+      code: 200,
       data: {
         tasks,
       },

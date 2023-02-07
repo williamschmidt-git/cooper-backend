@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { UpdateTask } from '../useCases/UpdateTask';
 import { ListTasks } from '../useCases/ListTasks';
 import { TaskDTO } from '../DTOs/TaskDTO';
 import { CreateTask } from '../useCases/CreateTask';
@@ -38,6 +39,19 @@ export class TaskController {
     const convertId = Number(id);
 
     const { code, data }: DataController = await deleteTasksUseCase.execute({ id: convertId });
+
+    return res.status(code).json(data);
+  }
+
+  async update(req: Request, res: Response) {
+    const updateTasksUseCase = container.resolve(UpdateTask);
+    const task = req.body;
+    const { id } = req.params;
+
+    const convertId = Number(id);
+
+    const { code, data }: DataController = await updateTasksUseCase
+      .execute({ id: convertId, task });
 
     return res.status(code).json(data);
   }

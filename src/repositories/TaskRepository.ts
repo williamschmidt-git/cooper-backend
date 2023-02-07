@@ -2,6 +2,7 @@
 import { Task } from '@prisma/client';
 // import { TaskDTO } from 'src/DTOs/TaskDTO';
 import { TaskMapper } from 'src/useCases/CreateTask';
+import { TaskDTO } from 'src/DTOs/TaskDTO';
 import { ITaskRepository } from '../database/prisma/repositories/ITaskRepository';
 import prisma from '../database/prisma/prisma';
 
@@ -44,6 +45,21 @@ export class TaskRepository implements ITaskRepository {
         id,
       },
     });
+
     return deletedTask;
+  }
+
+  async update(id: number, task: TaskDTO): Promise<Object> {
+    const updatedTask = await prisma.task.update({
+      where: {
+        id,
+      },
+      data: {
+        isTaskDone: task.isTaskDone,
+        taskToDo: task.taskToDo,
+      },
+    });
+
+    return updatedTask;
   }
 }

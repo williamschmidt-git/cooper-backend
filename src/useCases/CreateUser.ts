@@ -40,7 +40,7 @@ export class CreateUser {
     const { password: pass, ...user } = newUser;
 
     return {
-      code: 400,
+      code: 201,
       data: {
         user,
       },

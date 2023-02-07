@@ -21,7 +21,7 @@ export class CreateTask {
     const task = await this.taskRepository.create({ isTaskDone, taskToDo, userId });
 
     return {
-      code: 400,
+      code: 201,
       data: {
         task,
       },
