@@ -16,8 +16,8 @@ export class TaskRepository implements ITaskRepository {
     return newTask;
   }
 
-  list(id: number): Promise<Task[]> {
-    const tasks = prisma.task.findMany({
+  async list(id: number): Promise<Task[]> {
+    const tasks = await prisma.task.findMany({
       where: {
         userId: id,
       },
@@ -36,5 +36,14 @@ export class TaskRepository implements ITaskRepository {
     });
 
     return tasks;
+  }
+
+  async delete(id: number): Promise<Object> {
+    const deletedTask = await prisma.task.delete({
+      where: {
+        id,
+      },
+    });
+    return deletedTask;
   }
 }
