@@ -8,7 +8,8 @@ import { DataController } from './user.controller';
 
 export class TaskController {
   async create(req: Request, res: Response) {
-    const { isTaskDone, taskToDo, userId }: TaskDTO = req.body;
+    const { isTaskDone, taskToDo }: TaskDTO = req.body;
+    const { id: userId } = req.user;
     const createTaskUseCase = container.resolve(CreateTask);
 
     const { code, data }: DataController = await createTaskUseCase.execute({

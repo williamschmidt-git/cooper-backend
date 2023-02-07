@@ -1,7 +1,7 @@
 import { Task } from '@prisma/client';
-import { TaskDTO } from '../../../DTOs/TaskDTO';
+import { TaskMapper } from '../../../useCases/CreateTask';
 
 export interface ITaskRepository {
-  create(user: TaskDTO): Promise<Object>;
+  create(user: TaskMapper): Promise<Object>;
   list(id: number): Promise<Task[]>;
 }
