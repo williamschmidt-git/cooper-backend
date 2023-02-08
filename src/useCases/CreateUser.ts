@@ -37,12 +37,12 @@ export class CreateUser {
 
     await this.userRepository.create(newUser);
 
-    const { password: pass, ...user } = newUser;
+    // const { password: pass, ...user } = newUser;
 
     return {
       code: 201,
       data: {
-        user,
+        message: 'User created.',
       },
     };
   }

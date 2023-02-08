@@ -6,7 +6,6 @@ import bcrypt from 'bcrypt';
 import { DataController } from 'src/controllers/user.controller';
 
 interface LoginRequest {
-  username: string;
   password: string;
   email: string;
 }
