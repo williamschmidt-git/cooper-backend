@@ -10,7 +10,9 @@ import './infra/container/index';
 dotenv.config();
 
 const app: Express = express();
-app.use(cors());
+app.use(cors({
+  origin: '*',
+}));
 const port = process.env.PORT;
 
 app.use(express.json());
