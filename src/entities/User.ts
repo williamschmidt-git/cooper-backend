@@ -1,10 +1,11 @@
 import { Task } from '@prisma/client';
 
 export interface UserData {
-  id?: string;
+  id?: string | number;
   username: string;
-  password: string;
+  password?: string;
   email: string;
+  tasks?: Task[]
 }
 
 export class User {

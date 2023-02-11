@@ -1,4 +1,3 @@
-// import { ILoginRepository } from 'src/database/prisma/repositories/ILoginRepository';
 import { IUserRepository } from 'src/database/prisma/repositories/IUserRepository';
 import { inject, injectable } from 'tsyringe';
 import jwt from 'jsonwebtoken';
