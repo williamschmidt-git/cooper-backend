@@ -12,7 +12,7 @@ model User {
   username String
   password String
   email    String @unique
-  task     Task[]
+  tasks    Task[]
 }
 
 model Task {
@@ -20,7 +20,7 @@ model Task {
   isTaskDone Boolean @default(false)
   taskToDo   String
   userId     Int
-  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId], map: "Task_usersId_fkey")
 }

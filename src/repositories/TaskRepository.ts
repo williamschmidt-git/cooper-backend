@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 import { Task } from '@prisma/client';
-// import { TaskDTO } from 'src/DTOs/TaskDTO';
 import { TaskMapper } from 'src/useCases/CreateTask';
 import { TaskDTO } from 'src/DTOs/TaskDTO';
 import { ITaskRepository } from '../database/prisma/repositories/ITaskRepository';
@@ -22,18 +21,6 @@ export class TaskRepository implements ITaskRepository {
       where: {
         userId: id,
       },
-      // case you want to return user Data
-      // include: {
-      //   user: {
-      //     include: {
-      //       task: {
-      //         where: {
-      //           userId: id,
-      //         },
-      //       },
-      //     },
-      //   },
-      // },
     });
 
     return tasks;

@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import { DataController } from 'src/controllers/user.controller';
 import { IUserRepository } from 'src/database/prisma/repositories/IUserRepository';
 import { inject, injectable } from 'tsyringe';
@@ -35,14 +36,17 @@ export class CreateUser {
 
     const newUser = new User(username, hashPassword, email);
 
-    await this.userRepository.create(newUser);
+    const { id } = await this.userRepository.create(newUser);
 
-    // const { password: pass, ...user } = newUser;
+    const token = jwt.sign({ id }, process.env.JWT_PASS, {
+      expiresIn: '7d',
+    });
 
     return {
       code: 201,
       data: {
         message: 'User created.',
+        token,
       },
     };
   }
