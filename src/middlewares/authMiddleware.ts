@@ -15,6 +15,15 @@ export const authMiddleware = async (
   const userRepository = new UserRepository();
   const { authorization } = req.headers;
 
+  if (authorization === 'Bearer') {
+    return {
+      code: 403,
+      data: {
+        message: 'Unauthorized.',
+      },
+    };
+  }
+
   if (!authorization) {
     return {
       code: 403,
