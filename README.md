@@ -15,7 +15,6 @@ Este repositório é o servidor back-end do desafio para a empresa Coopers.
 <li>Testes unitários.</li>
 <li>Testes de integração.</li>
 
-
 ## Sobre o projeto
 Este projeto é uma lista de tarefas com um backend bastante simples, feito em Typescript + NodeJs. Conceitos de Programação orientada a objeto(POO) e de SOLID foram aplicados para que mesmo sendo simples, ainda tenha um esqueleto bastante escalável e robusto. Algumas bibliotecas foram utilizadas para facilitar a aplicação de tais conceitos, como a Tsyringe, que permitiu que eu fizesse as injeções de dependência sem maiores complicações.
 
