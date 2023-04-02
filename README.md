@@ -25,7 +25,7 @@ Na pasta raiz do projeto utilize o comando: ```npm install```.
 Para rodar o projeto: ```npm run dev```.
 
 ## Endpoints
-TBD
+TBD!
 
 ## Considerações
 Como sabemos, o trabalho de um desenvolvedor é infinito e requer constante manutenção do seu código, logo, esta aplicação foi enviada para vocês carente de testes. Os testes de integração e unitários serão realizados em um futuro próximo, assim como a correção dos problemas conhecidos. Dito isso, o backend foi a parte mais tranquila do desenvolvimento, mas nem por isso ela foi amena. Reafirmo, ainda há trabalho a ser feito(sempre há). Mas no que está aqui, acredito que em respeito do prazo está de acordo com o que me prôpus a entregar. #Keepcoding
